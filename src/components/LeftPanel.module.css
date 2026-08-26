@@ -1,0 +1,11 @@
+.panel { position: relative; width: 52%; min-height: 100vh; overflow: hidden; color: white; background: linear-gradient(160deg, #1e4d2b 0%, #2d6a4f 35%, #52b788 70%, #95d5b2 100%); }
+.panel::after { position: absolute; inset: 0; content: ''; background: linear-gradient(15deg, rgba(9, 46, 25, .42), transparent 60%); }
+.texture { position: absolute; inset: 0; opacity: .3; background: radial-gradient(ellipse at 80% 20%, rgba(255,255,255,.28), transparent 30%), radial-gradient(ellipse at 20% 80%, rgba(0,45,20,.4), transparent 38%); }
+.wifi { position: absolute; z-index: 1; top: 25%; left: 25%; width: min(34vw, 280px); height: auto; opacity: .9; }
+.copy { position: absolute; z-index: 2; bottom: 4rem; left: clamp(2rem, 5vw, 4rem); right: 2rem; }
+.kicker { margin-bottom: 1rem; font-size: .76rem; font-weight: 700; letter-spacing: .18em; opacity: .8; }
+h2 { max-width: 580px; font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 4vw, 3.55rem); letter-spacing: -.06em; line-height: 1.08; }
+h2 strong { font-weight: 700; }
+.caption { margin-top: 1.35rem; font-size: .95rem; opacity: .82; }
+@media (min-width: 768px) and (max-width: 1023px) { .panel { width: 45%; } .wifi { left: 13%; } }
+@media (max-width: 767px) { .panel { width: 100%; min-height: 260px; height: 260px; } .wifi { top: 7%; left: 57%; width: 160px; opacity: .5; } .copy { bottom: 1.6rem; left: 1.5rem; } .kicker { margin-bottom: .5rem; font-size: .62rem; } h2 { font-size: clamp(1.5rem, 8vw, 2.1rem); } .caption { display: none; } }

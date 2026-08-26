@@ -1,0 +1,8 @@
+.footer { padding: 1.7rem clamp(1.5rem, 5vw, 4.5rem) 1.15rem; background: var(--footer-bg); color: white; }
+.columns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.columns > div { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.columns svg { width: 1.35rem; height: 1.35rem; margin-bottom: .65rem; color: var(--green-light); }
+.columns small { color: rgba(255,255,255,.58); font-size: .65rem; }
+.columns strong { margin-top: .2rem; color: white; font-size: .7rem; font-weight: 500; }
+.footer > p { margin-top: 1.55rem; color: rgba(255,255,255,.42); font-size: .63rem; text-align: center; }
+@media (max-width: 480px) { .footer { padding-inline: 1rem; } .columns { gap: .25rem; } .columns strong { font-size: .62rem; } }

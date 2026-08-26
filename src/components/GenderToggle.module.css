@@ -1,0 +1,4 @@
+.group { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+.group button { display: flex; align-items: center; justify-content: center; gap: .45rem; min-height: 2.85rem; border: 2px solid var(--green-mid); border-radius: var(--radius-pill); background: white; color: var(--green-mid); cursor: pointer; font-size: .86rem; font-weight: 700; }
+.group button.selected { background: var(--green-mid); color: white; }
+.group svg { width: 1rem; height: 1rem; }

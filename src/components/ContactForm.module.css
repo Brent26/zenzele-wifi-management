@@ -1,0 +1,17 @@
+.form { display: flex; flex-direction: column; gap: 1.05rem; }
+.field, .fieldset { display: flex; flex-direction: column; gap: .45rem; border: 0; }
+.field label, legend { color: var(--text-dark); font-size: .77rem; font-weight: 700; }
+.inputWrap, .selectWrap { position: relative; }
+.inputWrap svg { position: absolute; top: 50%; left: 1rem; width: 1.15rem; height: 1.15rem; color: #7f9588; transform: translateY(-50%); }
+.inputWrap input, .selectWrap select { width: 100%; min-height: 2.85rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: white; color: var(--text-dark); padding: .72rem 1rem .72rem 2.9rem; font-size: .86rem; }
+.inputWrap input::placeholder { color: #9ca3af; }
+.selectWrap select { appearance: none; padding-left: 1rem; color: var(--text-muted); cursor: pointer; }
+.selectWrap svg { position: absolute; top: 50%; right: .9rem; width: 1rem; height: 1rem; color: var(--green-mid); pointer-events: none; transform: translateY(-50%); }
+.checks { display: flex; flex-direction: column; gap: .7rem; margin-top: .25rem; }
+.checks label { display: flex; align-items: flex-start; gap: .6rem; color: var(--text-muted); font-size: .72rem; line-height: 1.45; cursor: pointer; }
+.checks input { width: 1rem; height: 1rem; margin-top: .1rem; accent-color: var(--green-mid); flex: 0 0 auto; }
+.checks a { color: var(--green-mid); font-weight: 700; text-decoration: underline; }
+.continueButton { min-height: 3.05rem; margin-top: .25rem; border: 0; border-radius: var(--radius-sm); background: var(--green-mid); color: white; cursor: pointer; font-size: .9rem; font-weight: 700; }
+.continueButton span { margin-left: .35rem; font-size: 1.15rem; vertical-align: -1px; }
+.continueButton:disabled { cursor: not-allowed; opacity: .5; }
+.success { color: var(--green-mid); font-size: .8rem; font-weight: 700; text-align: center; }

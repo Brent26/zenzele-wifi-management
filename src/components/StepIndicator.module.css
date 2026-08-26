@@ -1,0 +1,11 @@
+.steps { display: flex; align-items: center; margin: 2.15rem 0 2rem; }
+.step { display: flex; align-items: center; gap: .55rem; color: #9ca3af; white-space: nowrap; }
+.step > span { display: grid; place-items: center; width: 2rem; height: 2rem; border: 1.5px solid #cbd5d1; border-radius: 50%; font-size: .8rem; font-weight: 700; }
+.step strong, .step small { display: block; }
+.step strong { font-size: .78rem; color: #737b76; }
+.step small { margin-top: .12rem; font-size: .66rem; color: #a0aaa4; }
+.step.active > span { border-color: var(--green-mid); background: var(--green-mid); color: white; }
+.step.active strong { color: var(--green-dark); }
+.line { height: 1px; flex: 1; min-width: 1rem; margin: 0 1rem; background: linear-gradient(to right, var(--green-mid) 50%, #d8dfdb 50%); }
+.line.complete { background: var(--green-mid); }
+@media (max-width: 480px) { .step small { display: none; } .line { margin: 0 .55rem; } }
