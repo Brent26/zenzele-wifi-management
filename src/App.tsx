@@ -1,32 +1,57 @@
-import { useState, type ReactNode } from 'react'
+import ContactForm from './components/ContactForm'
+import Footer from './components/Footer'
+import LeftPanel from './components/LeftPanel'
+import StepIndicator from './components/StepIndicator'
 import styles from './App.module.css'
 
-type IconName = 'overview' | 'visitors' | 'sessions' | 'devices' | 'settings' | 'help' | 'wifi'
-const iconPaths: Record<IconName, string> = {
-  overview: 'M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z', visitors: 'M16 20v-1.5a4.5 4.5 0 0 0-4.5-4.5H7a4.5 4.5 0 0 0-4.5 4.5V20M9.25 10.5a3.25 3.25 0 1 0 0-6.5 3.25 3.25 0 0 0 0 6.5ZM16 4.25a3.25 3.25 0 0 1 0 6.3M20.5 20v-1.5a4.5 4.5 0 0 0-3.25-4.3', sessions: 'M4 19V9M10 19V5M16 19v-7M22 19H2', devices: 'M5 4h14v12H5zM9 20h6M12 16v4', settings: 'M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7ZM19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-1.7 1.7-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.56V20h-2.4v-.2a1.7 1.7 0 0 0-1.03-1.56 1.7 1.7 0 0 0-1.88.34l-.06.06-1.7-1.7.06-.06A1.7 1.7 0 0 0 8.46 15a1.7 1.7 0 0 0-1.56-1.03h-.2v-2.4h.2A1.7 1.7 0 0 0 8.46 10a1.7 1.7 0 0 0-.34-1.88l-.06-.06 1.7-1.7.06.06a1.7 1.7 0 0 0 1.88.34 1.7 1.7 0 0 0 1.03-1.56V5h2.4v.2a1.7 1.7 0 0 0 1.03 1.56 1.7 1.7 0 0 0 1.88-.34l.06-.06 1.7 1.7-.06.06a1.7 1.7 0 0 0-.34 1.88A1.7 1.7 0 0 0 21 11.03h.2v2.4H21A1.7 1.7 0 0 0 19.4 15Z', help: 'M9.5 9a2.7 2.7 0 1 1 4.4 2.1c-1.1.8-1.9 1.3-1.9 2.9M12 17.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z', wifi: 'M2 8.5a16 16 0 0 1 20 0M5.5 12.5a10.5 10.5 0 0 1 13 0M9.5 16.2a5 5 0 0 1 5 0M12 20h.01',
+function WifiIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M3.5 9.5a13 13 0 0 1 17 0M7 13a8.2 8.2 0 0 1 10 0M10.2 16.2a3.7 3.7 0 0 1 3.6 0M12 19h.01" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  )
 }
-function Icon({ name }: { name: IconName }) { return <svg className={styles.icon} viewBox="0 0 24 24" aria-hidden="true"><path d={iconPaths[name]} fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" /></svg> }
-function Brand() { return <div className={styles.brand}><span className={styles.brandMark}>✦</span><span><strong>zenzele</strong><small>itereleng</small></span></div> }
-function Kpi({ title, value, change, gender = false }: { title: string; value: string; change: string; gender?: boolean }) { return <article className={styles.kpi}><div><p>{title}</p><strong>{value}</strong></div><div className={styles.kpiRight}><span>▲ {change}</span>{gender ? <div className={styles.people}>♙ / ♙</div> : <svg viewBox="0 0 90 32"><path d="M0 24 C12 19 17 28 26 19s12 9 21-8 16 15 25 5 12 8 18-7" fill="none" stroke="#719d62" strokeWidth="2.5" /></svg>}</div></article> }
-function Panel({ title, className, children }: { title: string; className?: string; children: ReactNode }) { return <article className={`${styles.panel} ${className || ''}`}><h2>{title}</h2>{children}</article> }
-function Rows({ items }: { items: string[] }) { return <div className={styles.genderRows}>{items.map((label, index) => <div key={label}><span>{label}</span><i><b style={{ width: `${72 - index * 7}%` }} /></i></div>)}</div> }
 
-const barValues = [68, 54, 73, 77, 61, 82, 71, 59, 86, 74, 63, 79, 34]
-const heatRows = Array.from({ length: 12 }, (_, row) => Array.from({ length: 10 }, (_, column) => (row * 7 + column * 11) % 5))
+function Logo() {
+  return (
+    <div className={styles.brand}>
+      <svg className={styles.logo} viewBox="0 0 48 52" aria-hidden="true">
+        <path d="M24 3c12.7 0 23 9 23 20.2H1C1 12 11.3 3 24 3Z" fill="var(--green-mid)" />
+        <path d="M20 22h8v24h-8z" fill="var(--green-dark)" rx="2" />
+      </svg>
+      <span>
+        <strong>zenzele</strong>
+        <em>itereleng</em>
+      </span>
+    </div>
+  )
+}
 
 export default function App() {
-  const [range, setRange] = useState('30d')
-  const [active, setActive] = useState('Visitors')
-  const navItems: { label: string; icon: IconName }[] = [{ label: 'Overview', icon: 'overview' }, { label: 'Visitors', icon: 'visitors' }, { label: 'Sessions', icon: 'sessions' }, { label: 'Devices', icon: 'devices' }]
-  return <main className={styles.dashboard}>
-    <aside className={styles.sidebar}><Brand /><nav aria-label="Main navigation"><p className={styles.navLabel}>ANALYTICS</p>{navItems.map((item) => <button key={item.label} className={`${styles.navItem} ${active === item.label ? styles.active : ''}`} onClick={() => setActive(item.label)} type="button"><Icon name={item.icon} /><span>{item.label}</span></button>)}</nav><div className={styles.sideBottom}><button className={styles.navItem} type="button"><Icon name="settings" /><span>Settings</span></button><button className={styles.navItem} type="button"><Icon name="help" /><span>Help centre</span></button><div className={styles.profile}><span>TM</span><div><strong>Tumelo M.</strong><small>Administrator</small></div><b>...</b></div></div></aside>
-    <section className={styles.mainContent}><header className={styles.topbar}><div><p className={styles.eyebrow}>WEDNESDAY, 26 AUGUST 2026</p><h1>Visitor statistics</h1></div><div className={styles.topActions}><button className={styles.connected} type="button"><Icon name="wifi" /> Stay Connected</button><button className={styles.avatar} type="button">TM</button></div></header>
-      <div className={styles.toolbar}><div className={styles.range}>{['7d', '30d', '90d', 'All'].map((item) => <button key={item} className={range === item ? styles.selected : ''} onClick={() => setRange(item)} type="button">{item}</button>)}</div><label className={styles.selectLabel}>VENUE<select defaultValue="Executive Centre"><option>Executive Centre</option><option>River Walk Mall</option><option>Central Library</option></select></label></div>
-      <div className={styles.kpis}><Kpi title="Total visitors" value="2,060" change="36.8%" /><Kpi title="Male / female split" value="1,135 / 925" change="1.0%" gender /><Kpi title="Avg. dwell time" value="38 min" change="10.82%" /></div>
-      <div className={styles.contentGrid}><Panel title="Peak hours" className={styles.heatPanel}><div className={styles.heatmap}>{heatRows.map((row, rowIndex) => row.map((value, columnIndex) => <span key={`${rowIndex}-${columnIndex}`} className={`${styles.heat} heat${value}`} />))}</div><div className={styles.axis}><span>08:00</span><span>12:00</span><span>16:00</span><span>20:00</span></div></Panel>
-        <Panel title="Dwell time" className={styles.dwellPanel}><div className={styles.horizontalBars}>{[92, 68, 49, 77, 42, 86, 71, 55].map((width, index) => <span key={index} style={{ width: `${width}%` }} />)}</div><div className={styles.dwellChart}><svg viewBox="0 0 540 130" preserveAspectRatio="none"><path d="M0 91 C55 115 78 107 120 92S190 80 230 103s53 8 75-14 37 1 64-9 43-27 62-15 33 36 52 23 39-22 57-16" fill="none" stroke="#719d62" strokeWidth="3" /><path d="M0 91 C55 115 78 107 120 92S190 80 230 103s53 8 75-14 37 1 64-9 43-27 62-15 33 36 52 23 39-22 57-16V130H0Z" fill="#dce8d8" /></svg><div className={styles.columns}>{barValues.slice(5).map((height, index) => <i key={index} style={{ height: `${height}%` }} />)}</div></div></Panel>
-        <Panel title="Daily sessions" className={styles.sessionsPanel}><div className={styles.sessionChart}>{barValues.map((height, index) => <i key={index} style={{ height: `${height}%` }} />)}</div><div className={styles.sessionLabels}><span>Aug 12</span><span>Aug 16</span><span>Aug 20</span><span>Aug 23</span></div></Panel>
-        <Panel title="Gender breakdown" className={styles.genderPanel}><Rows items={['10-24', '20-39', '30-49', '40-59', '50-64']} /><small className={styles.legend}><b />Male <b />Female <b />Other</small></Panel><Panel title="Device usage" className={styles.devicePanel}><Rows items={['Mobile', 'Samsung', 'iPhone', 'Tablet', 'Other']} /></Panel>
-      </div><footer className={styles.footer}>Copyright 2026 Zenzele Itereleng <span>·</span> Visitor analytics</footer></section>
-  </main>
+  return (
+    <main className={styles.appShell}>
+      <LeftPanel />
+      <section className={styles.rightPanel}>
+        <div className={styles.content}>
+          <header className={styles.header}>
+            <Logo />
+            <button type="button" className={styles.connectButton}>
+              <WifiIcon />
+              Stay Connected
+            </button>
+          </header>
+
+          <div className={styles.intro}>
+            <p className={styles.eyebrow}>STEP 1 OF 2</p>
+            <h1>Complete your details</h1>
+            <p>Enter your contact details to connect and continue.</p>
+          </div>
+
+          <StepIndicator activeStep={1} />
+          <ContactForm />
+        </div>
+        <Footer />
+      </section>
+    </main>
+  )
 }
