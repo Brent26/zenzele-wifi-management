@@ -26,3 +26,18 @@ body { min-width: 320px; min-height: 100vh; }
 button, input, select { font: inherit; }
 button, input, select { outline-offset: 3px; }
 button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--green-light); }
+
+.app-shell { min-height: 100vh; display: flex; background: var(--white); }
+.app-right-panel { width: 48%; min-height: 100vh; display: flex; flex-direction: column; background: #fff; }
+.app-content { width: min(100%, 600px); margin: 0 auto; padding: 2.75rem clamp(1.5rem, 5vw, 4.5rem) 2.25rem; flex: 1; }
+.app-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.app-brand { display: flex; align-items: center; gap: .65rem; color: var(--green-dark); }
+.app-logo { width: 2.85rem; height: 3.1rem; }
+.app-brand span { display: flex; flex-direction: column; line-height: .84; }
+.app-brand strong,.app-brand em { font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-style: normal; font-weight: 600; letter-spacing: -.06em; }
+.app-brand em { font-size: 1.17rem; font-weight: 500; margin-top: .2rem; }
+.app-connect-button { display: inline-flex; align-items: center; gap: .45rem; border: 0; border-radius: var(--radius-pill); background: var(--green-mid); color: white; cursor: pointer; padding: .65rem 1rem; font-size: .78rem; font-weight: 700; white-space: nowrap; }
+.app-wifi-icon { width: 1.05rem; height: 1.05rem; }
+
+@media (min-width: 768px) and (max-width: 1023px) { .app-right-panel { width: 55%; } }
+@media (max-width: 767px) { .app-shell { display: block; } .app-right-panel { width: 100%; min-height: auto; } .app-content { padding-top: 2rem; } }
