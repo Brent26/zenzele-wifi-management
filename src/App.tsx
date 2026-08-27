@@ -1,14 +1,23 @@
-import LeftPanel from './components/LeftPanel'
-import StepIndicator from './components/StepIndicator'
 import ContactForm from './components/ContactForm'
 import Footer from './components/Footer'
+import LeftPanel from './components/LeftPanel'
+import StepIndicator from './components/StepIndicator'
+import styles from './App.module.css'
 
-function TreeLogo() {
+function WifiIcon() {
   return (
-    <div className="app-brand" aria-label="Zenzele Itereleng">
-      <svg className="app-logo" viewBox="0 0 42 42" aria-hidden="true">
-        <path d="M4 21a17 17 0 0 1 34 0H4Z" fill="#2d6a4f" />
-        <rect x="18.5" y="21" width="5" height="16" rx="1.5" fill="#1e4d2b" />
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M3.5 9.5a13 13 0 0 1 17 0M7 13a8.2 8.2 0 0 1 10 0M10.2 16.2a3.7 3.7 0 0 1 3.6 0M12 19h.01" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+function Logo() {
+  return (
+    <div className={styles.brand}>
+      <svg className={styles.logo} viewBox="0 0 48 52" aria-hidden="true">
+        <path d="M24 3c12.7 0 23 9 23 20.2H1C1 12 11.3 3 24 3Z" fill="var(--green-mid)" />
+        <path d="M20 22h8v24h-8z" fill="var(--green-dark)" rx="2" />
       </svg>
       <span>
         <strong>zenzele</strong>
@@ -18,34 +27,26 @@ function TreeLogo() {
   )
 }
 
-function WifiIcon() {
-  return (
-    <svg className="app-wifi-icon" viewBox="0 0 24 24" aria-hidden="true">
-      <path
-        d="M2 8.5a16 16 0 0 1 20 0M5.5 12.5a10.5 10.5 0 0 1 13 0M9.5 16.2a5 5 0 0 1 5 0M12 20h.01"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
-
 export default function App() {
   return (
-    <main className="app-shell">
+    <main className={styles.appShell}>
       <LeftPanel />
-      <section className="app-right-panel">
-        <div className="app-content">
-          <header className="app-header">
-            <TreeLogo />
-            <button className="app-connect-button" type="button">
+      <section className={styles.rightPanel}>
+        <div className={styles.content}>
+          <header className={styles.header}>
+            <Logo />
+            <button type="button" className={styles.connectButton}>
               <WifiIcon />
               Stay Connected
             </button>
           </header>
+
+          <div className={styles.intro}>
+            <p className={styles.eyebrow}>STEP 1 OF 2</p>
+            <h1>Complete your details</h1>
+            <p>Enter your contact details to connect and continue.</p>
+          </div>
+
           <StepIndicator activeStep={1} />
           <ContactForm />
         </div>
